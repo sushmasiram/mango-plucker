@@ -6,9 +6,9 @@ class Mango{
           //friction: 1
       }
       this.image= loadImage("mango.png");
-      this.body = Bodies.circle(x, y, 65, options);
+      this.body = Bodies.circle(x, y, 20, options);
       
-      this.radius=65;
+      this.radius=50;
       World.add(world,this.body)
     }
     display(){

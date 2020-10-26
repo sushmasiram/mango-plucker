@@ -36,9 +36,9 @@ function setup(){
 	mango10 = new Mango(460, 290);
 	mango11 = new Mango(480, 240);
 	
-	stone = new Stone(28,350)
+	stone = new Stone(68,350)
 
-	launch = new launcher(stone.body,{x:55,y:445})
+	launch = new launcher(stone.body,{x:85,y:445})
 
 	Engine.run(engine);
 }
@@ -51,7 +51,7 @@ function draw() {
   textSize(25);
   text("Press Space to get a second Chance to Play!!",50 ,50);
 
-  image(boyImage ,20,380,200,300);
+  image(boyImage ,50,380,200,300);
 
   ground.display();
   tree.display();
@@ -100,23 +100,22 @@ function keyPressed() {
     Matter.Body.setPosition(stone.body, {x:55, y:445}) 
 	  launch.attach(stone.body);
 	}
-  }
+}
 
-  function detectollision(lstone,lmango){
-	
+function detectollision(lstone,lmango){
+	console.log(lstone.body.circleRadius)
   mangoBodyPosition=lmango.body.position
   stoneBodyPosition=lstone.body.position
   
-  var distance=dist(stoneBodyPosition.x, stoneBodyPosition.y, mangoBodyPosition.x, mangoBodyPosition.y)
-  //console.log(distance)
- // console.log(lmango.r+lstone.r)
-  	if(distance<=lmango.r+lstone.r)
-    {
-      
-  	  Matter.Body.setStatic(lmango.body,false);
-    }
-
+  var distance=dist(stoneBodyPosition.x, stoneBodyPosition.y, mangoBodyPosition.x, mangoBodyPosition.y);
+  console.log(distance)
+  s = lstone.body.circleRadius+lmango.body.circleRadius;
+  if(distance<=s)
+  {
+    Matter.Body.setStatic(lmango.body,false);
   }
+
+}
 
 
 
